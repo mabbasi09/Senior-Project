@@ -1,0 +1,11 @@
+Title: Drop Courses
+Actor: Student
+
+Scenario:
+1. Student navigates to course selection page
+2. Student selects courses to drop from transcript
+3. System checks student tracker for warnings/suggestions
+4. Course is removed from student schedule (or denied)
+5. System decrements course capacity by 1
+6. Student tracker is updated with newest schedule
+7. System submits new course schedule to University for approval
