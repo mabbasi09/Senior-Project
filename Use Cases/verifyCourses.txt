@@ -1,0 +1,9 @@
+Title: Verify student course selection
+Actor: System (student tracker module)
+
+Scenario:
+1. Student selects courses to add/drop
+2. System verifies prerequisites, duplicate courses, add/drop dates
+3. Upon failure, system notifies student and returns to page
+3. Upon success, system updates student tracker and makes suggestions
+4. System sends updated schedule to university for approval

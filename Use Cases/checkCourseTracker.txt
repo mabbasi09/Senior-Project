@@ -1,0 +1,7 @@
+Title: Check course tracker
+Actor: Student
+
+Scenario:
+1. Student navigates to course tracker page
+2. System generates student data
+3. Page displays completed/future courses, suggestions, and dates

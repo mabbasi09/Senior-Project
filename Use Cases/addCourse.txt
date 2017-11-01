@@ -1,0 +1,11 @@
+Title: Add Courses
+Actor: Student
+
+Scenario:
+1. Student navigates to course selection page
+2. Student selects courses to add to transcript
+3. System checks student tracker for warnings/suggestions
+4. Course is added to student schedule (or denied)
+5. System increments course capacity by 1
+6. Student tracker is updated with newest course
+7. System submits new course schedule to university for approval
