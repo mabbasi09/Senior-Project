@@ -255,6 +255,18 @@ nav {
 
 /* HEADER */
 
+div#header {
+   height: 10%;
+ }
+ div#sidebar {
+   width: 10%;
+   position: relative;
+   top: 55px;
+ }
+ ul {
+   width: 50px;
+ }
+
 #header {
     background: #EF8354;
     height: 25px;
