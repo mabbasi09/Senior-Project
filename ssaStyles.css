@@ -22,7 +22,7 @@ main {
 .sidebar {
   height: 100%;
   width: 275px;
-  position: fixed;
+  float: right;
   top: 0;
   z-index: 1;
   right: 0;
