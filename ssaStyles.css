@@ -26,14 +26,14 @@ main {
   top: 0;
   z-index: 1;
   right: 0;
-  background-color: #EF8354;
+  background-color: #2c8233;
 }
 
 .bar {
   display: block;
   height: 5px;
   width: 50px;
-  background-color: #EF8354;
+  background-color: #2c8233;
   margin: 10px auto;
 }
 
@@ -256,7 +256,7 @@ nav {
 /* HEADER */
 
 #header {
-    background: #EF8354;
+    background: #2c8233;
     height: 25px;
     padding: 75px 75px
 }
