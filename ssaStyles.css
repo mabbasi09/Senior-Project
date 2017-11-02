@@ -21,7 +21,7 @@ main {
 
 .sidebar {
   height: 100%;
-  width: 200px;
+  width: 250px;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -105,11 +105,11 @@ main {
 }
 
 .move-to-left {
-  -webkit-transform: translateX(-400px);
-  -moz-transform: translateX(-400px);
-  -ms-transform: translateX(-400px);
-  -o-transform: translateX(-400px);
-  transform: translateX(-400px);
+  -webkit-transform: translateX(-250px);
+  -moz-transform: translateX(-250px);
+  -ms-transform: translateX(-250px);
+  -o-transform: translateX(-250px);
+  transform: translateX(-250px);
 }
 
 nav {
