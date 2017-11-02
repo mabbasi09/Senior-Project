@@ -256,12 +256,17 @@ nav {
 /* HEADER */
 
 #header {
-    background-color: orange;
+    background: #EF8354;
     height: auto;
     padding: 100px 100px
 }
 h1 {
     color: white;
     font-family: Arial;
-    text-align: center;
+    text-align: left;
+}
+h1 {
+    color: white;
+    font-family: Arial;
+    text-align: left;
 }
