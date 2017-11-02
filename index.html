@@ -1,8 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
+  <head>
+    
+    <title>STUDENT SCHEDULER APP</title>
+    
+    <link rel="stylesheet" type="text/css" href="ssaStyles.css">
+    
+    <script>
+   
+$(document).ready(function() {
 
-STUDENT SCHEDUULER APP
+  function toggleSidebar() {
+    $(".button").toggleClass("active");
+    $("main").toggleClass("move-to-left");
+    $(".sidebar-item").toggleClass("active");
+  }
 
-</body>
+  $(".button").on("click tap", function() {
+    toggleSidebar();
+  });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode === 27) {
+      toggleSidebar();
+    }
+  });
+
+});
+    </script>
+    
+  </head>
+  
+  <body>
+    
+    <div class="nav-right visible-xs">
+  <div class="button" id="btn">
+    <div class="bar top"></div>
+    <div class="bar middle"></div>
+    <div class="bar bottom"></div>
+  </div>
+</div>
+<!-- nav-right -->
+<main>
+
+
+  <nav>
+    <div class="nav-right hidden-xs">
+      <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+      </div>
+    </div>
+    <!-- nav-right -->
+  </nav>
+
+  <a href="https://codepen.io/tonkec/" class="ua" target="_blank">
+    <i class="fa fa-user"></i>
+  </a>
+</main>
+
+<div class="sidebar">
+  <ul class="sidebar-list">
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Schedule</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Progress</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Add a course</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Drop a course</a></li>
+  </ul>
+</div>
+    
+  </body>
+  
 </html>
