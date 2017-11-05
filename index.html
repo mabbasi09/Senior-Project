@@ -78,19 +78,19 @@ $(document).ready(function() {
  Welcome to our student scheduler app.
 </div>
   
-<div id="page2">
+<div id="page2" style="display:none;">
   Schedule page
 </div>
    
-<div id="page3">
+<div id="page3" style="display:none;">
   Progress page
 </div>
 
-<div id="page4">
+<div id="page4" style="display:none;">
   Add a course page
 </div>
   
-<div id="page5">
+<div id="page5" style="display:none;">
   Drop a course page
 </div>
   
@@ -110,11 +110,11 @@ $(document).ready(function() {
 
 <div class="sidebar">
   <ul class="sidebar-list">
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Home</a><li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Schedule</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Progress</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Add a course</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor">Drop a course</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(1)">Home</a><li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(2)">Schedule</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(3)">Progress</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(4)">Add a course</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(5)">Drop a course</a></li>
   </ul>
 </div>
     
