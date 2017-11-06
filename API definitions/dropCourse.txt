@@ -1,0 +1,30 @@
+/*
+name: dropCourse
+parameters: courseInfo API (JSON)
+URL: /api/drop_course (PUT)
+description:
+-consumes tracker API data
+-calls verify to check for restrictions (like if drop date has been passed), 
+-upon success, outputs data to tracker api for removal
+-upon failure, sets failure message and returns data to tracker
+-success/failure page rendered upon completion
+-acts as a controller to commmunicate with other modules
+
+*/
+
+//Input
+{
+	"action": "dropCourse",
+	"course": courseInfo
+}
+
+//Output
+{
+	"success": true,
+	"course": courseInfo
+}
+//or
+{
+	"failure": true,
+	"message": "Unable to drop this course at this time"
+}

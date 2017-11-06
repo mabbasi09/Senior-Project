@@ -1,0 +1,19 @@
+/*
+name: schedule
+parameters: student, courseInfo API (JSON)
+URL: /main/schedule (GET)
+description:
+-contains list of courses for each student
+-consumes input from add/drop methods to update student schedule
+-will be visible in tracker module and used to displaying student progress
+*/
+
+//Input
+{
+	"course": courseInfo
+}
+
+//Output
+{
+	"schedule": [courseInfo, courseInfo, etc...]
+}
