@@ -1,0 +1,35 @@
+/*
+name: courseInfo
+parameters: CSV file
+URL: /api/new_course
+description:
+-consumes data from CSV file
+-convert to json
+-stores data in DB
+-can be called from other API's to output course data
+-primary object that is passed to other modules for course info
+*/
+
+//Input
+-parsed CSV data from Point Park's course list
+
+//Output
+{
+	"name": "Intro to Programming",
+	"code": "CMPS 162",
+	"format": "online",
+	"dates": {
+			"start": 08/26/2017,
+			"end": 10/23/2017
+			},
+	"instructor": "Mark Voortman",
+	//if no prerequisites
+	"preReqs": {
+				needed: false;
+			 }
+	//if there are prerequisites
+	"preReqs": {
+				needed: true;
+				courses: [course1, course2]
+			   }
+}

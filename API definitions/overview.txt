@@ -1,0 +1,74 @@
+SENIOR PROJECT API'S
+
+name: tracker
+parameters: none
+URL: /main
+description:
+-homepage that displays all student info
+-upon loading, queries DB for current courses, future courses, total credits, dates, and other degree requirements
+-calls add/drop methods and sends course data, waits for response
+-contains student, schedule, and catalog modules
+-mainly functions as a controller for behavior with other modules
+
+name: courseInfo
+parameters: CSV file
+URL: /api/new_course
+description:
+-consumes data from CSV file
+-convert to json
+-stores data in DB
+-can be called from other API's to output course data
+
+name: addCourse
+parameters: courseInfo API (JSON)
+URL: /api/add_course (POST)
+description:
+-consumes courseInfo API data
+-calls verify to check prerequisites, degree progress
+-verify returns success/failure result
+-calls tracker to update student schedule (outputs data to tracker API, inserts into DB)
+-success/failure page is rendered upon completion.
+
+name: dropCourse
+parameters: courseInfo API (JSON)
+URL: /api/drop_course (DELETE)
+description:
+-consumes tracker API data
+-calls verify to check for restrictions, 
+-upon success, outputs data to tracker api for removal
+-upon failure, sets failure message and returns data to tracker
+-success/failure page rendered upon completion
+
+name: verify
+parameters: courseInfo API (JSON)
+URL: /api/verify
+description:
+-consumes data from add/drop methods
+-checks student schedule for prerequisites and duplicate courses
+-returns success/failure to add/drop methods
+
+name: schedule
+parameters: student, courseInfo API (JSON)
+URL: /main/schedule
+description:
+-contains list of courses for each student
+-consumes input from add/drop methods to update student schedule
+-will be visible in tracker module and used to displaying student progress
+
+
+name: student
+parameters: name, id
+URL: /main/student
+description:
+-used for identifying student data to associate with other modules
+-contains schedule object and student info
+
+name: catalog
+parameters: course CSV data
+URL: /main/catalog
+description:
+-consumes data from CSV file to store as courseInfo objects
+-is used to display to user for performing actions (add/drop)
+
+
+
