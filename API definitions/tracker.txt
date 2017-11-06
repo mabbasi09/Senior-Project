@@ -1,0 +1,22 @@
+/*
+name: tracker
+parameters: none
+URL: /main (GET)
+description:
+-homepage that displays all student info
+-upon loading, queries DB for current courses, future courses, total credits, dates, and other degree requirements
+-calls add/drop methods and sends course data, waits for response
+-contains student, schedule, and catalog modules
+-acts as a controller to handle user events and commmunicate with other modules
+*/
+
+//Input
+no input, is the homepage that contains student object data
+
+//Output
+{
+	"addCourse": "courseInfo",
+	"dropCourse": "courseInfo",
+}
+
+(may be adding more methods to this later)

@@ -1,0 +1,30 @@
+/*
+name: addCourse
+parameters: courseInfo API (JSON)
+URL: /api/add_course (POST)
+description:
+-consumes courseInfo API data
+-calls verify to check prerequisites, degree progress
+-upon success, calls tracker to update student schedule (outputs data to tracker API, inserts into DB)
+-upon failure, sets failure message and returns response to tracker
+-success/failure page is rendered upon completion.
+-acts as a controller to commmunicate with other modules
+
+*/
+
+//Input
+{
+	"action": "addCourse",
+	"course": courseInfo
+}
+
+//Output
+{
+	"success": true,
+	"course": courseInfo
+}
+//or
+{
+	"failure": true,
+	"message": "You are missing prerequisites"
+}

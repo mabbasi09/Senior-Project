@@ -1,0 +1,18 @@
+/*
+name: catalog
+parameters: course CSV data
+URL: /main/catalog (GET)
+description:
+-consumes data from CSV file to store as courseInfo objects
+-is used to display to user for performing actions (add/drop)
+-will be stored in DB and queried for filtering specific courses
+*/
+
+//Input
+-parsed CSV data for adding new courses to catalog
+-courseInfo object for methods
+
+//Output
+{
+	courses: [courseInfo, courseInfo, etc..]
+}

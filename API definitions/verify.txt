@@ -1,0 +1,24 @@
+/*
+name: verify
+parameters: courseInfo API (JSON)
+URL: /api/verify (GET)
+description:
+-consumes data from add/drop methods
+-checks student schedule for prerequisites and duplicate courses
+-returns success/failure to add/drop methods
+*/
+
+//Input
+-courseInfo JSON data from add/drop methods
+
+//Output
+{
+	"success": true,
+	"course": courseInfo
+}
+//or
+{
+	"failure": true,
+	"message": "There is a missing prerequisite for this course",
+	"course": courseInfo
+}

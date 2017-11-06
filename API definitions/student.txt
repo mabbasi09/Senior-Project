@@ -1,0 +1,18 @@
+/*
+name: student
+parameters: name, id
+URL: /main/student (GET)
+description:
+-used for identifying student data to associate with other modules
+-contains schedule object and student info
+*/
+
+//Input
+{
+	"name": "student1",
+	"id": 556423
+	"schedule": schedule
+}
+
+//Output
+-none
