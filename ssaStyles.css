@@ -10,7 +10,7 @@ html {
 main {
   font-color: white;
   z-index: 2;
-  position: fixed;
+  position: absolute;
   height: 100%;
   background-color: #2D3142;
   -webkit-transition: transform .7s ease-in-out;
