@@ -32,7 +32,6 @@ $(document).ready(function() {
     $("#page2").hide();
     $("#page3").hide();
     $("#page4").hide();
-    $("#page5").hide();
 
     if (page === 1) {
       $("#page1").show();
@@ -46,12 +45,76 @@ $(document).ready(function() {
     else if (page === 4) {
       $("#page4").show();
     }
-    else if (page === 5) {
-      $("#page5").show();
-    }
   }
       
     </script>
+    
+    
+    <style>
+      
+      @import "compass/css3";
+
+body {
+  background: #dbe6dd; 
+  text-align: center;
+  -webkit-transform: translateZ(0);
+}
+
+.btn-big-green {
+  background-color: #2c8233;
+  background-image: 
+    linear-gradient(
+      168deg, 
+      rgba(white, 0.1) 50%, 
+      rgba(black, 0) 55%),
+    linear-gradient(
+      top, 
+      rgba(white, 0.15), 
+      rgba(black, 0));
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 1px #061e0d inset,
+    0 0 0 2px rgba(white, 0.15) inset,
+    0 8px 0 0 #061e0d,
+    0 8px 0 1px rgba(black, 0.4),
+    0 8px 8px 1px rgba(black, 0.5);
+  color: #FFF;
+  display: inline-block;
+  font-family: "Lucida Grande", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  height: 61px;
+  letter-spacing: -1px;
+  line-height: 61px;
+  margin: 30px 0 10px;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(black, 0.5);
+  text-decoration: none !important;
+  top: 0;
+  width: 186px;
+  @include transition(0.15s);
+  &:hover, &:focus {
+    background-color: #030703;
+    box-shadow: 
+      0 0 0 1px #C63702 inset,
+      0 0 0 2px rgba(white, 0.15) inset,
+      0 10px 0 0 #AD3002,
+      0 10px 0 1px rgba(black, 0.4),
+      0 10px 8px 1px rgba(black, 0.6);
+      top: -2px;
+  }
+  &:active {
+    box-shadow: 
+      0 0 0 1px #AD3002 inset,
+      0 0 0 2px rgba(white, 0.15) inset,
+      0 0 0 1px rgba(black, 0.4);
+    @include transform(translateY(10px));      
+  }
+}
+
+      
+    </style>
     
   </head>
   
@@ -76,25 +139,49 @@ $(document).ready(function() {
 <br><br><br>
   
 <div id="page1">
+  
   <center><font color="white">Welcome to our student scheduler app.</font></center>
+  
+  <br><br>
+  
+  
+  <a href="#" class="btn-big-green">Course Catalog</a>
+  
 </div>
+  
+  
   
 <div id="page2" style="display:none;">
-  <center><font color="white">Schedule page</font></center>
+  
+  <center>
+  
+  <a href="#" class="btn-big-green">View schedule</a>
+    
+  </center>
 </div>
    
+  
+  
 <div id="page3" style="display:none;">
-  <center><font color="white">Progress page</font></center>
+  
+  <center>
+  
+  <a href="#" class="btn-big-green">View progress</a>
+    
+  </center>
 </div>
 
+  
+  
 <div id="page4" style="display:none;">
-  <center><font color="white">Add a course page</font></center>
-</div>
   
-<div id="page5" style="display:none;">
-  <center><font color="white">Drop a course page</font></center>
-</div>
+  <center>
   
+  <a href="#" class="btn-big-green">Add a course</a>
+  <a href="#" class="btn-big-green">Drop a course</a>
+  
+  </center>
+</div>
   
   <nav>
     <div class="nav-right hidden-xs">
@@ -114,11 +201,11 @@ $(document).ready(function() {
     <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(1)">Home</a><li>
     <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(2)">Schedule</a></li>
     <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(3)">Progress</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(4)">Add a course</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(5)">Drop a course</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(4)">Registration</a></li>
   </ul>
 </div>
     
+  
   </body>
   
 </html>
