@@ -4,12 +4,6 @@
     
     <title>STUDENT SCHEDULER APP</title>
     
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    
     <link rel="stylesheet" type="text/css" href="ssaStyles.css">
     
     <script src="jquery-3.2.1.min.js"></script>
@@ -52,19 +46,7 @@ $(document).ready(function() {
       $("#page4").show();
     }
   }
-   
- 
-      
- $(document).ready(function(){
-  $('.dropdown-submenu a.test').on("click", function(e){
-    $(this).next('ul').toggle();
-    e.stopPropagation();
-    e.preventDefault();
-  });
-});     
-      
-      
-      
+         
     </script>
     
     
@@ -130,21 +112,6 @@ body {
     @include transform(translateY(10px));      
   }
 }
-
-      
-      
-      
-  .dropdown-submenu {
-    position: relative;
-}
-
-.dropdown-submenu .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -1px;
-}
-      
-      
       
     </style>
     
@@ -208,28 +175,7 @@ body {
 <div id="page4" style="display:none;">
   
   <center>
-    
-                                         
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Prerequisite Check
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li class="dropdown-submenu">
-        <a class="test" tabindex="-1" href="#">I.T. Core<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a tabindex="-1" href="#">MATH 175 - ELEMENTARY STATISTICS</a></li>
-          <li><a tabindex="-1" href="#">MATH 180 - COLLEGE ALGEBRA</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-    
-    
-    
-  
+                                     
   <a href="#" class="btn-big-green">Add a course</a>
   <a href="#" class="btn-big-green">Drop a course</a>
   
