@@ -1,237 +1,235 @@
+
 <!doctype html>
-<html>
-  <head>
-    
-    <title>STUDENT SCHEDULER APP</title>
-    
-    <link rel="stylesheet" type="text/css" href="ssaStyles.css">
-    
-    <script src="jquery-3.2.1.min.js"></script>
-    
-    <script>
-      
-$(function() {
-  console.log("jQuery was loaded");
-});
-   
-$(document).ready(function() {
+  <html>
+    <head>
+      <title>STUDENT SCHEDULER APP</title>
+      <link rel="stylesheet" type="text/css" href="ssaStyles.css">
+      <script src="jquery-3.2.1.min.js"></script>
+      <script>
+        
+        $(function() {
+          console.log("jQuery was loaded");
+        });
+         
+        $(document).ready(function() {
 
-  function toggleSidebar() {
-    $(".button").toggleClass("active");
-    $("main").toggleClass("move-to-left");
-    $(".sidebar-item").toggleClass("active");
-  }
+          function toggleSidebar() {
+            $(".button").toggleClass("active");
+            $("main").toggleClass("move-to-left");
+            $(".sidebar-item").toggleClass("active");
+          }
 
-  $(".button").on("click tap", function() {
-    toggleSidebar();
-  });
-});
-    
-  function showpage(page) {
-    $("#page1").hide();
-    $("#page2").hide();
-    $("#page3").hide();
-    $("#page4").hide();
+          $(".button").on("click tap", function() {
+            toggleSidebar();
+          });
 
-    if (page === 1) {
-      $("#page1").show();
-    }
-    else if (page === 2) {
-      $("#page2").show();
-    }
-    else if (page === 3) {
-      $("#page3").show();
-    }
-    else if (page === 4) {
-      $("#page4").show();
-    }
-  }
+          if (!$("#page1").css('display') == 'none'){
+            console.log("catalog is shown");
+          }
+
+        });
+          
+        function showpage(page) {
+          $("#page1").hide();
+          $("#page2").hide();
+          $("#page3").hide();
+          $("#page4").hide();
+
+          if (page === 1) {
+            $("#page1").addClass("show");
+          }
+          else if (page === 2) {
+            $("#page2").show();
+          }
+          else if (page === 3) {
+            $("#page3").show();
+          }
+          else if (page === 4) {
+            $("#page4").show();
+          }
+        }
      
 
-var choices = ["","No prerequisites for MATH 175.","No prerequisites for MATH 180.","No prerequisites for CMPS 160.","No prerequisites for CMPS 161.","CMPS 160 - DATABASES is a prerequisite for CMPS 162.", "No prerequisites for CMPS 163.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 260.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 261.", "CMPS 260 - DATA STRUCTURES is a prerequisite for CMPS 262.", "All I.T. core classes must be completed before taking this course."];
-window.onload=function() {
-  document.getElementById("course-dropdown").onchange=function() {
-    if (this.value !== 0) alert(choices[this.value]);
-  }
-}      
-      
-    </script>
+        var choices = ["","No prerequisites for MATH 175.","No prerequisites for MATH 180.","No prerequisites for CMPS 160.","No prerequisites for CMPS 161.","CMPS 160 - DATABASES is a prerequisite for CMPS 162.", "No prerequisites for CMPS 163.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 260.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 261.", "CMPS 260 - DATA STRUCTURES is a prerequisite for CMPS 262.", "All I.T. core classes must be completed before taking this course."];
+        
+        window.onload=function() {
+          document.getElementById("course-dropdown").onchange=function() {
+            if (this.value !== 0) alert(choices[this.value]);
+          }
+        }      
+      </script>
     
-    
-    <style>
-      
-      @import "compass/css3";
+      <style>
+        @import "compass/css3";
 
-body {
-  background: #dbe6dd; 
-  text-align: center;
-  -webkit-transform: translateZ(0);
-}
+        body {
+          background: #dbe6dd; 
+          text-align: center;
+          -webkit-transform: translateZ(0);
+        }
 
-.btn-big-green {
-  background-color: #2c8233;
-  background-image: 
-    linear-gradient(
-      168deg, 
-      rgba(white, 0.1) 50%, 
-      rgba(black, 0) 55%),
-    linear-gradient(
-      top, 
-      rgba(white, 0.15), 
-      rgba(black, 0));
-  border-radius: 6px;
-  box-shadow:
-    0 0 0 1px #061e0d inset,
-    0 0 0 2px rgba(white, 0.15) inset,
-    0 8px 0 0 #061e0d,
-    0 8px 0 1px rgba(black, 0.4),
-    0 8px 8px 1px rgba(black, 0.5);
-  color: #FFF;
-  display: inline-block;
-  font-family: "Lucida Grande", Arial, sans-serif;
-  font-size: 22px;
-  font-weight: bold;
-  height: 61px;
-  letter-spacing: -1px;
-  line-height: 61px;
-  margin: 30px 0 10px;
-  position: relative;
-  text-align: center;
-  text-shadow: 0 1px 1px rgba(black, 0.5);
-  text-decoration: none !important;
-  top: 0;
-  width: 186px;
-  @include transition(0.15s);
-  &:hover, &:focus {
-    background-color: #030703;
-    box-shadow: 
-      0 0 0 1px #C63702 inset,
-      0 0 0 2px rgba(white, 0.15) inset,
-      0 10px 0 0 #AD3002,
-      0 10px 0 1px rgba(black, 0.4),
-      0 10px 8px 1px rgba(black, 0.6);
-      top: -2px;
-  }
-  &:active {
-    box-shadow: 
-      0 0 0 1px #AD3002 inset,
-      0 0 0 2px rgba(white, 0.15) inset,
-      0 0 0 1px rgba(black, 0.4);
-    @include transform(translateY(10px));      
-  }
-}
-      
-    </style>
-    
-  </head>
-  
+        .btn-big-green {
+          background-color: #2c8233;
+          background-image: 
+            linear-gradient(
+              168deg, 
+              rgba(white, 0.1) 50%, 
+              rgba(black, 0) 55%),
+            linear-gradient(
+              top, 
+              rgba(white, 0.15), 
+              rgba(black, 0));
+          border-radius: 6px;
+          box-shadow:
+            0 0 0 1px #061e0d inset,
+            0 0 0 2px rgba(white, 0.15) inset,
+            0 8px 0 0 #061e0d,
+            0 8px 0 1px rgba(black, 0.4),
+            0 8px 8px 1px rgba(black, 0.5);
+          color: #FFF;
+          display: inline-block;
+          font-family: "Lucida Grande", Arial, sans-serif;
+          font-size: 22px;
+          font-weight: bold;
+          height: 61px;
+          letter-spacing: -1px;
+          line-height: 61px;
+          margin: 30px 0 10px;
+          position: relative;
+          text-align: center;
+          text-shadow: 0 1px 1px rgba(black, 0.5);
+          text-decoration: none !important;
+          top: 0;
+          width: 186px;
+          @include transition(0.15s);
+          &:hover, &:focus {
+            background-color: #030703;
+            box-shadow: 
+              0 0 0 1px #C63702 inset,
+              0 0 0 2px rgba(white, 0.15) inset,
+              0 10px 0 0 #AD3002,
+              0 10px 0 1px rgba(black, 0.4),
+              0 10px 8px 1px rgba(black, 0.6);
+              top: -2px;
+          }
+          &:active {
+            box-shadow: 
+              0 0 0 1px #AD3002 inset,
+              0 0 0 2px rgba(white, 0.15) inset,
+              0 0 0 1px rgba(black, 0.4);
+            @include transform(translateY(10px));      
+          }
+        }
+      </style>
+    </head>
+
   <body>
     
-<div id="header">
-    <h1>Welcome!</h1>
-</div>
+    <div id="header">
+        <h1>Welcome!</h1>
+    </div>
     
     <div class="nav-right visible-xs">
-    <div class="button" id="btn">
-    <div class="bar top"></div>
-    <div class="bar middle"></div>
-    <div class="bar bottom"></div>
-  </div>
-</div>
-    
-<!-- nav-right -->
-
-<main>
-  
-<br><br><br>
-  
-<div id="page1">
-  
-  <center><font color="white">Welcome to our student scheduler app.</font></center>
-  
-  <br><br>
-  
-  
-  <a href="#" class="btn-big-green">Course Catalog</a>
-  
-</div>
-  
-  
-  
-<div id="page2" style="display:none;">
-  
-  <center>
-  
-  <a href="#" class="btn-big-green">View schedule</a>
-    
-  </center>
-</div>
-   
-  
-  
-<div id="page3" style="display:none;">
-  
-  <center>
-  
-  <a href="#" class="btn-big-green">View progress</a>
-    
-  </center>
-</div>
-
-  
-  
-<div id="page4" style="display:none;">
- 
-  <font color="white">Pre-requisite checker</font>
-  
-  <br><br>
-  
-  <select id="course-dropdown">
-        <option value="0">I.T. Core</option>
-        <option value="1">MATH 175 - ELEMENTARY STATISTICS</option>
-        <option value="2">MATH 180 - COLLEGE ALGEBRA</option>
-        <option value="3">CMPS 160 - DATABASES</option>
-        <option value="4">CMPS 161 - NETWORKING AND SECURITY</option>
-        <option value="5">CMPS 162 - INTRODUCTION TO PROGRAMMING</option>
-        <option value="6">CMPS 163 - BUSINESS ANALYTICS</option>
-        <option value="7">CMPS 260 - DATA STRUCTURES</option>
-        <option value="8">CMPS 261 - SERVER MANAGEMENT</option>
-        <option value="9">CMPS 262 - ADVANCED PROGRAMMING</option>
-        <option value="10">CMPS 480 - SENIOR PROJECT</option>
-</select>
-<span id="choice"></span>
-  
-  <br><br>
-  
-  <center>
-                                     
-  <a href="#" class="btn-big-green">Add a course</a>
-  <a href="#" class="btn-big-green">Drop a course</a>
-  
-  </center>
-</div>
-  
-  <nav>
-    <div class="nav-right hidden-xs">
-    <div class="button" id="btn">
-    <div class="bar top"></div>
-    <div class="bar middle"></div>
-    <div class="bar bottom"></div>
+      <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
       </div>
     </div>
-   <!-- nav-right -->
-  </nav>
-  
-</main>
+    
+    <!-- nav-right -->
 
-<div class="sidebar">
-  <ul class="sidebar-list">
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(1)">Home</a><li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(2)">Schedule</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(3)">Progress</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(4)">Registration</a></li>
-  </ul>
-</div>
+    <main>
+      
+    <br><br><br>
+      
+    <div id="page1">
+      
+      <center><font color="white">Welcome to our student scheduler app.</font></center>
+      
+      <br><br>
+      
+      
+      <a href="#" class="btn-big-green catalog">Course Catalog</a>
+      
+    </div>
+      
+      
+      
+    <div id="page2" style="display:none;">
+      
+      <center>
+      
+      <a href="#" class="btn-big-green">View schedule</a>
+        
+      </center>
+    </div>
+       
+      
+      
+    <div id="page3" style="display:none;">
+      
+      <center>
+      
+      <a href="#" class="btn-big-green">View progress</a>
+        
+      </center>
+    </div>
+
+      
+      
+    <div id="page4" style="display:none;">
+     
+      <font color="white">Pre-requisite checker</font>
+      
+      <br><br>
+      
+      <select id="course-dropdown">
+            <option value="0">I.T. Core</option>
+            <option value="1">MATH 175 - ELEMENTARY STATISTICS</option>
+            <option value="2">MATH 180 - COLLEGE ALGEBRA</option>
+            <option value="3">CMPS 160 - DATABASES</option>
+            <option value="4">CMPS 161 - NETWORKING AND SECURITY</option>
+            <option value="5">CMPS 162 - INTRODUCTION TO PROGRAMMING</option>
+            <option value="6">CMPS 163 - BUSINESS ANALYTICS</option>
+            <option value="7">CMPS 260 - DATA STRUCTURES</option>
+            <option value="8">CMPS 261 - SERVER MANAGEMENT</option>
+            <option value="9">CMPS 262 - ADVANCED PROGRAMMING</option>
+            <option value="10">CMPS 480 - SENIOR PROJECT</option>
+    </select>
+    <span id="choice"></span>
+      
+      <br><br>
+      
+      <center>
+                                         
+      <a href="#" class="btn-big-green">Add a course</a>
+      <a href="#" class="btn-big-green">Drop a course</a>
+      
+      </center>
+    </div>
+      
+      <nav>
+        <div class="nav-right hidden-xs">
+        <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+          </div>
+        </div>
+       <!-- nav-right -->
+      </nav>
+      
+    </main>
+
+    <div class="sidebar">
+      <ul class="sidebar-list">
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(1)">Home</a><li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(2)">Schedule</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(3)">Progress</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(4)">Registration</a></li>
+      </ul>
+    </div>
     
   
   </body>
