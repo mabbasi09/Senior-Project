@@ -1,62 +1,82 @@
 //BASE SETUP FOR SERVER, DATABASE AND UTILITIES
 
 //Initialize express object
-const express = require('express');
-const app = express();
+var express = require('express');
+var app = express();
 
-//Initialize MySQL and create connection
-const mysql = require('mysql');
-const db = mysql.createConnection({
-	host	: 'localhost',
-	user	: 'Mohammad',
-	password: '111111',
-	// database: 'ssa-db' 
-});
+var path = require('path');
+var mysql = require('mysql');
+var credentials = require('./models/credentials.js');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var expressHandlebars = require('express-handlebars');
+var expressValidator = require('express-validator');
+var flash = require('connect-flash');
+var session = require('express-session');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
 
-db.connect(function(err){
-	// if(err){
-	// 	throw err;
-	// }
-	console.log('MySQL connected...');
-});
 
-//body-parser utility
-const bodyParser = require('body-parser');
+//Templating engine
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', expressHandlebars({defaultLayout: 'layout'}));
+app.set('view engine', 'handlebars');
 
-//path utility
-const path = require('path');
-
-// var logger = function(req, res, next){
-// 	console.log('Logging...');
-// 	next();
-// }
-
-// app.use(logger);
-
-//View engine
-// app.set('view engine', 'ejs');
-// app.set('views', path.join(__dirname, 'views'));
-
-//Body Parser Middleware
+//Body Parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
 
-//Set Static Path
+//Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get('/createdb', function(req, res){
+//Express session
+app.use(session({
+	secret: 'secret',
+	saveUninitialized: true,
+	resave: true
+}));
 
-// 	let sql = 'CREATE DATABASE ssa-db';
+//Passport initialization
+app.use(passport.initialize());
+app.use(passport.session());
 
-// 	db.query(sql, function(err, result){
-// 		// if(err){
-// 		// 	throw err;
-// 		// }
-// 		console.log(result);
-// 		res.send('database created...')
-// 	});
-// });
+//Express Validator
+app.use(expressValidator({
+	errorFormatter: function(param, msg, value){
+		var namespace = param.split('.')
+		, root = namespace.shift()
+		, formParam = root;
 
-app.listen(3000, function(){
-	console.log("server started on port 3000");
+		while(namespace.length) {
+			formParam += '[' + namespace.shift() + ']';
+		}
+		return {
+			param : formParam,
+			msg : msg,
+			value : value
+		};
+	}
+}));
+
+//Connect Flash
+app.use(flash());
+
+//Global variables
+app.use(function(req, res, next){
+	res.locals.success_msg = req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error = req.flash('error');
+	next();
+});
+
+//Define routes
+var routes = require('./routes/main');
+var router = express.Router();
+app.use('/', routes);
+
+app.set('port', (process.env.PORT || 3000));
+
+app.listen(app.get('port'), function(){
+	console.log("Server started on port " + app.get('port'));
 });
