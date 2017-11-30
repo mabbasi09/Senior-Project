@@ -55,7 +55,12 @@
           document.getElementById("course-dropdown").onchange=function() {
             if (this.value !== 0) alert(choices[this.value]);
           }
-        }      
+        }
+        
+        function courseCatalog() {
+          alert("Test");
+        }
+        
       </script>
     
       <style>
@@ -146,7 +151,7 @@
      
     <br>
       
-     <a href="#" class="btn-big-green catalog">Course Catalog</a>
+     <a href="#" class="btn-big-green catalog" onclick="courseCatalog()">Course Catalog</a>
       
     <br><br><br>  
       
