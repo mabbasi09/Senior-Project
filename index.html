@@ -1,4 +1,3 @@
-
 <!doctype html>
   <html>
     <head>
@@ -56,7 +55,12 @@
           document.getElementById("course-dropdown").onchange=function() {
             if (this.value !== 0) alert(choices[this.value]);
           }
-        }      
+        }
+        
+        function courseCatalog() {
+          alert("Test");
+        }
+        
       </script>
     
       <style>
@@ -143,14 +147,11 @@
       
     <br><br><br>
       
-    <div id="page1">
+      <center><font color="white"><b>Welcome To Our Student Scheduler App!</b></font></center>
+         
+    <br><br><br>  
       
-      <center><font color="white">Welcome to our student scheduler app.</font></center>
-      
-      <br><br>
-      
-      
-      <a href="#" class="btn-big-green catalog">Course Catalog</a>
+    <div id="page1" style="display:none;">
       
     </div>
       
@@ -202,7 +203,11 @@
       <br><br>
       
       <center>
-                                         
+      
+      <a href="#" class="btn-big-green catalog" onclick="courseCatalog()">Course Catalog</a>  
+        
+        <br>
+        
       <a href="#" class="btn-big-green">Add a course</a>
       <a href="#" class="btn-big-green">Drop a course</a>
       

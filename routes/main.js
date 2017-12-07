@@ -4,6 +4,28 @@ var user = require('../models/user');
 var db = require('../models/db').db;
 var dbConnect = require('../models/db').connection;
 
+
+$("#addCourse").on("click", function(){
+   var data = {'title':'programming',
+                'code':'CMPS 101'};
+   $.ajax({
+    url: '/addCourse',
+    type: 'POST',
+    data: data
+   });
+})
+
+$("#removeCourse").on("click", function(){
+   var data = {'title':'programming',
+                'code':'CMPS 101' '*REMOVED FROM SCHEDULE*'};
+   $.ajax({
+    url: '/removeCourse',
+    type: 'POST',
+    data: data
+   });
+})
+
+
 //Homepage
 router.get('/', function(req, res){
 	res.render('main');
@@ -109,4 +131,26 @@ router.post('/updateSchedule', function(req, res){
 	}
 });
 
+// Schedule
+
+// Add course
+router.post('/addCourse', function(req, res){
+    var title = res.body.title
+    var sql = 'INSERT INTO Schedule title WHERE studentId = "56";';
+    var query = db.db.query(sql, function(err, results, fields){
+        console.log(results);
+});
+
+// Remove course
+router.post('/removeCourse', function(req, res){
+    var title = res.body.title
+    var sql = 'DELETE FROM Schedule title WHERE studentId = "56";';
+    var query = db.db.query(sql, function(err, results, fields){
+        console.log(results);
+});	
+
+// View progress
+
+	
+	
 module.exports = router;
