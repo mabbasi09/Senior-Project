@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th id="year">Year</th>
+      <th id="term">Term</th>
+      <th id="code">Code</th>
+      <th id="title">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each dummy}}
+    <tr>
+      <td>{{this.year}}</td>
+      <td>{{this.term}}</td>
+      <td>{{this.code}}</td>
+      <td>{{this.title}}</td>
+    </tr>
+      {{/each}}
+  </tbody>
+</table>
