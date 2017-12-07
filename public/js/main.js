@@ -78,7 +78,7 @@ $(document).ready(function() {
       }
 
       if (selected.length == 0){
-         $("#addDropResult").html("Please select a class to add drop");
+         $("#addDropResult").html("Please select a class to add drop").css("color", "red");
          return 0;
       }
 
@@ -95,7 +95,7 @@ $(document).ready(function() {
           console.log("successfully sent data to server");
         },
         error: function(){
-          $("#addDropResult").html("Unable to update schedule at this time");
+          $("#addDropResult").html("Unable to update schedule at this time").css("color", "red");
           console.log("data not sent to server");
         }
       });
