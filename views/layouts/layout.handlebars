@@ -5,9 +5,9 @@
       <link rel="stylesheet" type="text/css" href="css/main.css">
       <script src="js/jquery-3.2.1.min.js"></script>
       <script src="js/main.js"></script>
-      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
       <style>
-        @import "compass/css3";
+        /*@import "compass/css3";*/
 
         body {
           background: #dbe6dd; 
@@ -67,9 +67,27 @@
             @include transform(translateY(10px));      
           }
         }
+        tr#course-rows:hover {
+          background-color: silver;
+        }
+        td {
+          padding: 15px;
+        }
+        th, td {
+          color: white;
+          border-bottom: 1px solid white;
+        }
+        .addDropResult {
+          color: white;
+        }
       </style>
     </head>
 <body>
-	{{{body}}}
+  <div>
+    {{#if success_msg}}
+      <div class="alert">{{success_msg}}</div>
+    {{/if}}
+    {{{body}}}
+  </div>
 </body>
 </html>
