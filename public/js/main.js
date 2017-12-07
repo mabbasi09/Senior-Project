@@ -21,7 +21,6 @@ $(document).ready(function() {
     
     //Fetch courses data from server and build table
     $.get('/catalog', function(data){
-      console.log(data);
 
       $("#catalog").hide();
       $("#jsonTable").show();
