@@ -71,8 +71,7 @@ app.use(function(req, res, next){
 });
 
 //Define routes
-var routes = require('./routes/main');
-var router = express.Router();
+var routes = require('./routes/mainRoutes');
 app.use('/', routes);
 
 app.set('port', (process.env.PORT || 3000));
