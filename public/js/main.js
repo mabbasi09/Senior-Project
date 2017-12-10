@@ -62,6 +62,7 @@ $(document).ready(function() {
     });//end GET
 
     var addBtn = $("<a href='#' id='add' class='btn-big-green'>Add a course</a>");
+     | 
     var dropBtn = $("<a href='#' id='drop' class='btn-big-green'>Drop a course</a>");
     
     $(addBtn).add(dropBtn).on("click", function(e){
