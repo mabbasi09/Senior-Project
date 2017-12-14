@@ -1,11 +1,7 @@
 $(function() {
   console.log("jQuery was loaded");
 });
-<<<<<<< HEAD
 
-=======
-         
->>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
 $(document).ready(function() {
   function toggleSidebar() {
     $(".button").toggleClass("active");
@@ -52,11 +48,7 @@ $(document).ready(function() {
     });//end GET
     var addBtn = $("<a href='#' id='add' class='btn-big-green'>Add a course</a>");
     var dropBtn = $("<a href='#' id='drop' class='btn-big-green'>Drop a course</a>");
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
     //add and drop button event handlers
     $(addBtn).add(dropBtn).on("click", function(e){
       e.stopPropagation();
@@ -89,19 +81,15 @@ $(document).ready(function() {
         }
       });//end POST
     });//end add/drop events
-<<<<<<< HEAD
 
   });//end catalog button click event
   //Create table, buttons, and events for course catalog
   $("#schedule").on("click", function(){
-
-=======
  
   });//end catalog button click event
   //Create table, buttons, and events for course catalog
   $("#schedule").on("click", function(){
     
->>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
     //Fetch courses data from server and build table
     $.get('/schedule', function(data){
       $("#schedule").hide();
@@ -132,11 +120,7 @@ $(document).ready(function() {
         }
       }
     });//end GET
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
   });//end schedule button click event
 });//end document ready
 function showpage(page) {
@@ -153,7 +137,14 @@ function showpage(page) {
   else if (page === 3) {
     $("#page3").show();
   }
+  else if (page === 4) {
+    $("#page4").show();
+  }
+  else if (page === 5) {
+    $(#page5").show();
+  }
 }
+      
 var choices = ["","No prerequisites for MATH 175.","No prerequisites for MATH 180.","No prerequisites for CMPS 160.","No prerequisites for CMPS 161.","CMPS 160 - DATABASES is a prerequisite for CMPS 162.", "No prerequisites for CMPS 163.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 260.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 261.", "CMPS 260 - DATA STRUCTURES is a prerequisite for CMPS 262.", "All I.T. core classes must be completed before taking this course."];
 window.onload=function() {
   $("#course-dropdown").onchange=function() {
