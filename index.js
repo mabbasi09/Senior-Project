@@ -24,7 +24,7 @@ app.set('view engine', 'handlebars');
 
 //Body Parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 
 //Set static folder
@@ -71,8 +71,7 @@ app.use(function(req, res, next){
 });
 
 //Define routes
-var routes = require('./routes/main');
-var router = express.Router();
+var routes = require('./routes/mainRoutes');
 app.use('/', routes);
 
 app.set('port', (process.env.PORT || 3000));

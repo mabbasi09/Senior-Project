@@ -64,12 +64,12 @@ $(document).ready(function() {
     var addBtn = $("<a href='#' id='add' class='btn-big-green'>Add a course</a>");
     var dropBtn = $("<a href='#' id='drop' class='btn-big-green'>Drop a course</a>");
     
+    //add and drop button event handlers
     $(addBtn).add(dropBtn).on("click", function(e){
       e.stopPropagation();
 
       //Tells AJAX wheter to add or drop courses
       var action = $(this).attr("id");
-
       console.log(action + " button clicked");
 
       var selected = [];
@@ -91,18 +91,63 @@ $(document).ready(function() {
           "action": action
         },
         success: function(){
-          $("#addDropResult").html("You have successfully updated your schedule!");
+          $("#addDropResult").html("You have successfully updated your schedule!").css("color", "white");
           console.log("successfully sent data to server");
         },
         error: function(){
           $("#addDropResult").html("Unable to update schedule at this time").css("color", "red");
           console.log("data not sent to server");
         }
-      });
-
-    });
+      });//end POST
+    });//end add/drop events
  
   });//end catalog button click event
+
+  //Create table, buttons, and events for course catalog
+  $("#schedule").on("click", function(){
+    
+    //Fetch courses data from server and build table
+    $.get('/schedule', function(data){
+
+      $("#schedule").hide();
+      $("#scheduleTable").show();
+
+      var headers = ["year", "term", "code", "title"];
+      var table = $("<table></table>");
+
+      $("#scheduleTable").append(table);
+
+      //Create Table Headers
+      var tr = $("<tr id='headers'>");
+      table.append(tr);
+
+      tr.append($("<th>"));
+
+      for (var j = 0; j < headers.length; j++){
+        var th = $("<th>");
+
+        tr.append(th);
+        th.append(headers[j].toUpperCase());
+      }
+
+      //Create table course rows
+      for (var i = 0; i < data.length; i++){
+        var tr = $("<tr id='course-rows'>");
+        table.append(tr);
+
+        var courseID = data[i].courseID;
+        tr.append("<td><input type='checkbox' id=" + courseID + "></td>");
+
+        //Fill table cell values
+        for (var j = 0; j < headers.length; j++){
+          var td = $("<td>");
+          tr.append(td);
+          td.append(data[i][headers[j]]);
+        }
+      }
+    });//end GET
+ 
+  });//end schedule button click event
 
 });//end document ready
 
@@ -110,7 +155,6 @@ function showpage(page) {
   $("#page1").hide();
   $("#page2").hide();
   $("#page3").hide();
-  $("#page4").hide();
 
   if (page === 1) {
     $("#page1").show();
@@ -121,9 +165,6 @@ function showpage(page) {
   }
   else if (page === 3) {
     $("#page3").show();
-  }
-  else if (page === 4) {
-    $("#page4").show();
   }
 }
 
