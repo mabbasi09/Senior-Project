@@ -127,9 +127,10 @@ function showpage(page) {
   $("#page1").hide();
   $("#page2").hide();
   $("#page3").hide();
+  $("#page4").hide();
+  $("#page5").hide();
   if (page === 1) {
     $("#page1").show();
-
   }
   else if (page === 2) {
     $("#page2").show();
@@ -141,7 +142,7 @@ function showpage(page) {
     $("#page4").show();
   }
   else if (page === 5) {
-    $(#page5").show();
+    $"("#page5").show();
   }
 }
       
