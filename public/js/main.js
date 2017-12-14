@@ -1,7 +1,11 @@
 $(function() {
   console.log("jQuery was loaded");
 });
+<<<<<<< HEAD
 
+=======
+         
+>>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
 $(document).ready(function() {
   function toggleSidebar() {
     $(".button").toggleClass("active");
@@ -48,7 +52,11 @@ $(document).ready(function() {
     });//end GET
     var addBtn = $("<a href='#' id='add' class='btn-big-green'>Add a course</a>");
     var dropBtn = $("<a href='#' id='drop' class='btn-big-green'>Drop a course</a>");
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
     //add and drop button event handlers
     $(addBtn).add(dropBtn).on("click", function(e){
       e.stopPropagation();
@@ -81,11 +89,19 @@ $(document).ready(function() {
         }
       });//end POST
     });//end add/drop events
+<<<<<<< HEAD
 
   });//end catalog button click event
   //Create table, buttons, and events for course catalog
   $("#schedule").on("click", function(){
 
+=======
+ 
+  });//end catalog button click event
+  //Create table, buttons, and events for course catalog
+  $("#schedule").on("click", function(){
+    
+>>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
     //Fetch courses data from server and build table
     $.get('/schedule', function(data){
       $("#schedule").hide();
@@ -116,7 +132,11 @@ $(document).ready(function() {
         }
       }
     });//end GET
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 486afdf58e4a1df042ba36345ca244eb583426fd
   });//end schedule button click event
 });//end document ready
 function showpage(page) {
