@@ -85,10 +85,6 @@ $(document).ready(function() {
   });//end catalog button click event
   //Create table, buttons, and events for course catalog
   $("#schedule").on("click", function(){
- 
-  });//end catalog button click event
-  //Create table, buttons, and events for course catalog
-  $("#schedule").on("click", function(){
     
     //Fetch courses data from server and build table
     $.get('/schedule', function(data){
