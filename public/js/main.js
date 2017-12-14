@@ -142,7 +142,7 @@ function showpage(page) {
     $("#page4").show();
   }
   else if (page === 5) {
-    $"("#page5").show();
+    $("#page5").show();
   }
 }
       
