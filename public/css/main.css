@@ -259,7 +259,7 @@ nav {
 #header {
     background: #2c8233;
     height: 25px;
-    padding: 75px 75px
+    padding: 75px 75px;
 }
 h1 {
     color: white;
@@ -268,12 +268,6 @@ h1 {
 }
 
 h2 {
-    line-height: 12px;
-    width: 18px;
-    font-size: 8pt;
-    font-family: tahoma;
-    margin-top: 1px;
-    margin-right: 2px;
     position: absolute;
     top: 0;
     right: 0;
