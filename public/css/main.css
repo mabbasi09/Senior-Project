@@ -1,10 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
-body,
-html {
-  height: 100%;
+
+html, body{
   padding: 0;
   margin: 0;
-  font-family: 'Arimo', sans-serif;
+}
+html{
+  height: 100%;
+}
+body{
+  min-height: 100%;
+  margin: 0px;
 }
 
 main {
@@ -259,12 +264,7 @@ nav {
 #header {
     background: #2c8233;
     height: 25px;
-    padding: 75px 75px
-}
-h1 {
-    color: white;
-    font-family: Arial;
-    text-align: center;
+    padding: 75px 75px;
 }
 
 /* Progress */

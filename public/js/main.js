@@ -141,10 +141,48 @@ function showpage(page) {
     $("#page5").show();
   }
 }
+  
+function choice1(selected)
+    {
       
-var choices = ["","No prerequisites for MATH 175.","No prerequisites for MATH 180.","No prerequisites for CMPS 160.","No prerequisites for CMPS 161.","CMPS 160 - DATABASES is a prerequisite for CMPS 162.", "No prerequisites for CMPS 163.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 260.", "CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 261.", "CMPS 260 - DATA STRUCTURES is a prerequisite for CMPS 262.", "All I.T. core classes must be completed before taking this course."];
-window.onload=function() {
-  $("#course-dropdown").onchange=function() {
-    if (this.value !== 0) alert(choices[this.value]);
-  }
-}    
+        if(selected.options[selected.selectedIndex].text === "MATH 175 - ELEMENTARY STATISTICS")
+        {
+          alert("No prerequisites for MATH 175.");
+        }
+        else if(selected.options[selected.selectedIndex].text === "MATH 180 - COLLEGE ALGEBRA")
+        {
+        alert("No prerequisites for MATH 180.");
+        }
+        else if(selected.options[selected.selectedIndex].text === "CMPS 160 - DATABASES")
+        {
+        alert("No prerequisites for CMPS 160.");
+        }
+        else if(selected.options[selected.selectedIndex].text === "CMPS 161 - NETWORKING AND SECURITY")
+        {
+        alert("No prerequisites for CMPS 161.");
+        }
+            else if(selected.options[selected.selectedIndex].text === "CMPS 162 - INTRODUCTION TO PROGRAMMING")
+        {
+        alert("CMPS 160 - DATABASES is a prerequisite for CMPS 162.");
+        }
+            else if(selected.options[selected.selectedIndex].text === "CMPS 163 - BUSINESS ANALYTICS")
+        {
+        alert("No prerequisites for CMPS 163.");
+        }
+            else if(selected.options[selected.selectedIndex].text === "CMPS 260 - DATA STRUCTURES")
+        {
+        alert("CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 260.");
+        }
+            else if(selected.options[selected.selectedIndex].text === "CMPS 261 - SERVER MANAGEMENT")
+        {
+        alert("CMPS 162 - INTRODUCTION TO PROGRAMMING is a prerequisite for CMPS 261.");
+        }
+            else if(selected.options[selected.selectedIndex].text === "CMPS 262 - ADVANCED PROGRAMMING")
+        {
+        alert("CMPS 260 - DATA STRUCTURES is a prerequisite for CMPS 262.");
+        }
+            else if(selected.options[selected.selectedIndex].text === "CMPS 480 - SENIOR PROJECT")
+        {
+        alert("All I.T. core classes must be completed before taking this course.");
+        }
+    }
