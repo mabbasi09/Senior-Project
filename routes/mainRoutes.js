@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var user = require('../models/user');
+var degreeCourses = require('../models/degreeCourses');
 var db = require('../models/db').db;
 var dbConnect = require('../models/db').connection;
 
@@ -120,7 +121,7 @@ router.post('/login',
 //Course catalog data API
 router.get('/catalog', function(req, res){
 
-	var sql = 'SELECT courseID, year, term, code, title FROM Course WHERE instructorLast = "Voortman";';
+	var sql = 'SELECT courseID, year, term, code, title, credits FROM Course WHERE code LIKE "%CMPS%";';
 	var query = db.query(sql, function(err, results, fields){
 		res.json(results);
 	});
@@ -132,7 +133,7 @@ router.post('/updateSchedule', function(req, res){
 
 	var courseCodes = req.body.data;
 	var action = req.body.action;
-	var studentId = "1"
+	var studentId = req.body.userId
 
 	//Tells us which courses to drop/add
 	console.log("User has requested to " + action + " course: " + courseCodes);
@@ -174,18 +175,22 @@ router.post('/updateSchedule', function(req, res){
 router.get('/schedule', function(req, res){
 
 	var studentId = "1";
-	var sql = 'SELECT Schedule.Course_courseId, year, term, code, title '
+	var sql = 'SELECT Schedule.Course_courseId, year, term, code, title, credits '
 			+ 'FROM Course '
 			+ 'JOIN Schedule ' 
 			+ 	'ON Course_courseId = Course.courseId '
 			+	'WHERE Student_studentId = ?;';
 	var inserts = [studentId];
 	var query = db.query(sql, inserts, function(err, results, fields){
-		console.log(err);
-		console.log(results);
+		console.log("There is an error: " + err);
 		res.json(results);
 	});
 
+});
+
+//Show classes that need to be taken
+router.get('/progress', function(req, res){
+	res.json(degreeCourses.major);
 });
 
 module.exports = router;
