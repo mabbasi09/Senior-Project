@@ -1,0 +1,89 @@
+<div id="header">
+  <font size="10" color="white">Welcome!</font>
+</div>
+
+<main>
+<br><br><br>
+
+
+
+<div id="page1">
+  <center><font color="white">Welcome! Click below to check out the course catalog!</font></center>
+  <br><br>
+  
+  <font color="white">Pre-requisite checker</font>
+  
+  <br><br>
+  
+ <select id="course-dropdown" onchange="choice1(this);">
+    <option value="0"><i>LIST OF I.T. CORE CLASSES</i></option>
+    <option value="1"><b>MATH 175</b> - ELEMENTARY STATISTICS</option>
+    <option value="2"><b>MATH 180</b> - COLLEGE ALGEBRA</option>
+    <option value="3"><b>CMPS 160</b> - DATABASES</option>
+    <option value="4"><b>CMPS 161</b> - NETWORKING AND SECURITY</option>
+    <option value="5"><b>CMPS 162</b> - INTRODUCTION TO PROGRAMMING</option>
+    <option value="6"><b>CMPS 163</b> - BUSINESS ANALYTICS</option>
+    <option value="7"><b>CMPS 260</b> - DATA STRUCTURES</option>
+    <option value="8"><b>CMPS 261</b> - SERVER MANAGEMENT</option>
+    <option value="9"><b>CMPS 262</b> - ADVANCED PROGRAMMING</option>
+    <option value="10"><b>CMPS 480</b> - SENIOR PROJECT</option>
+ </select>
+  
+  <br>
+  
+  <a href="#" id="catalog" class="btn-big-green">Course Catalog</a>
+  <center>
+  <div id="addDropResult"></div>
+  <div id="jsonTable"></div>
+  </center>
+  
+</div> 
+  
+<div id="page2" style="display:none;">
+  <center>
+    <a href="#" id="schedule" class="btn-big-green">View schedule</a>
+    <div id="scheduleTable"></div>
+  </center>
+</div>
+  
+<div id="page3" style="display:none;">
+  <center>
+    <a href="#" class="btn-big-green">View progress</a>
+  </center>
+</div>
+
+  <div id="page5" style="display:none;">
+    <br>
+
+    <div class="container">
+      <ol class="progress-meter">
+        <li class="progress-point done"><font color="white">25%</font></li><li class="progress-point incomplete"><font color="white">50%</font></li><li class="progress-point incomplete"><font color="white">75%</font></li><li class="progress-point incomplete"><font color="white">Ready For Graduation!</font></li>
+      </ol>
+    </div>
+    
+    <center>
+      <div id="suggestions">You may be interested in these upcoming courses:</div>
+      <div id="futureCourses"></div>
+    </center>
+  </div>
+  
+ <!-- nav-right -->
+  <nav>
+    <div class="nav-right hidden-xs">
+      <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+      </div>
+    </div>
+  </nav>
+
+</main>
+
+<div class="sidebar">
+  <ul class="sidebar-list">
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(1)">Home</a><li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(2)">Schedule</a></li>
+    <li class="sidebar-item"><a href="#" class="sidebar-anchor" onclick="showpage(3)">Progress</a></li>
+  </ul>
+</div>

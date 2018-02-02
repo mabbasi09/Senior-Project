@@ -4,8 +4,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var user = require('../models/user');
 var degreeCourses = require('../models/degreeCourses');
-var db = require('../models/db').db;
-var dbConnect = require('../models/db').connection;
+var db = require('../models/db');
 
 //Homepage
 router.get('/', function(req, res){
@@ -121,9 +120,16 @@ router.post('/login',
 //Course catalog data API
 router.get('/catalog', function(req, res){
 
-	var sql = 'SELECT courseID, year, term, code, title, credits FROM Course WHERE code LIKE "%CMPS%";';
-	var query = db.query(sql, function(err, results, fields){
-		res.json(results);
+	db.newConnection(function(err, conn) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			var sql = 'SELECT courseID, year, term, code, title, credits FROM Course WHERE code LIKE "%CMPS%";';
+			conn.query(sql, function(err, results, fields){
+				res.json(results);
+			});
+		}
 	});
 
 });
@@ -131,9 +137,8 @@ router.get('/catalog', function(req, res){
 //Add a course to schedule
 router.post('/updateSchedule', function(req, res){
 
-	var courseCodes = req.body.data;
-	var action = req.body.action;
-	var studentId = req.body.userId
+	var courseCodes = req.body.courses;
+	var studentId = req.body.userId;
 
 	//Tells us which courses to drop/add
 	console.log("User has requested to " + action + " course: " + courseCodes);
@@ -141,7 +146,7 @@ router.post('/updateSchedule', function(req, res){
 	if (action == "add"){
 
 		for(var i = 0; i < courseCodes.length; i++){
-			var sql = 'INSERT INTO Schedule (Student_studentId, Course_courseId)'
+			var sql = 'INSERT INTO Schedule (Student_studentId, Course_courseId) '
 					+ 'Values (?, ?)';
 			var inserts = [studentId, courseCodes[i]];
 			var query = db.query(sql, inserts, function(err, results, fields){
@@ -174,23 +179,45 @@ router.post('/updateSchedule', function(req, res){
 //Course catalog data API
 router.get('/schedule', function(req, res){
 
-	var studentId = "1";
-	var sql = 'SELECT Schedule.Course_courseId, year, term, code, title, credits '
-			+ 'FROM Course '
-			+ 'JOIN Schedule ' 
-			+ 	'ON Course_courseId = Course.courseId '
-			+	'WHERE Student_studentId = ?;';
-	var inserts = [studentId];
-	var query = db.query(sql, inserts, function(err, results, fields){
-		console.log("There is an error: " + err);
-		res.json(results);
-	});
+	db.newConnection(function(err, conn){
+		if (err){
+			console.log(err)
+		}
+		else {
 
+			var studentId = "1";
+			var sql = 'SELECT Schedule.Course_courseId, year, term, code, title, credits '
+					+ 'FROM Course '
+					+ 'JOIN Schedule ' 
+					+ 	'ON Course_courseId = Course.courseId '
+					+	'WHERE Student_studentId = ?;';
+			var inserts = [studentId];
+
+			conn.query(sql, inserts, function(err, results, fields){
+				if (err){
+					console.log("There is an error: " + err);
+				}
+				res.json(results);
+			});
+		}
+	});
 });
+
+//Receive completed course info to add to transcript
+router.post('/add-to-transcript', function(req, res){
+	var courseCodes = req.body.courseCodes;
+	var action = req.body.action;
+	var studentId = req.body.userId;
+
+	console.log(courseCodes);
+
+	res.send(courseCodes);
+});
+
 
 //Show classes that need to be taken
 router.get('/progress', function(req, res){
-	res.json(degreeCourses.major);
+	res.send(degreeCourses.major);
 });
 
 module.exports = router;

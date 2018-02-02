@@ -1,22 +1,34 @@
 var mysql = require('mysql');
 var credentials = require('../models/credentials.js');
 
-const db = mysql.createConnection({
-	host	: credentials.host,
-	user	: credentials.user,
-	password: credentials.password,
-	database: credentials.database
-});
 
-var connection = db.connect(function(err){
-	if(err){
-		console.log(err.stack);
-	} else {
-		console.log('MySQL connected...');
-	}
-});
+function newConnection(cb) {
+	var conn = mysql.createConnection({
+		host	: credentials.host,
+		user	: credentials.user,
+		password: credentials.password,
+		database: credentials.database
+	});
+	conn.connect(function(err) {
+		try {
+			cb(err, conn);
+		}
+		catch(e){
+			console.log("database error: " + e);
+		}
+	});
+}
 
 module.exports = {
-	db : db,
-	connection : connection,
+	newConnection: newConnection
 }
+
+/**Use this format in other models that interact with DB**/
+// db.newConnection(function(err, conn) {
+// 	if (err) {
+// 		console.log(err);
+// 	}
+// 	else {
+// 		conn.query();
+// 	}
+// });

@@ -11,32 +11,41 @@ $(document).ready(function() {
   $(".button").on("click tap", function() {
     toggleSidebar();
   });
+  //Keep table hidden until course data is fetched
   $(".jsonTable").hide();
+
   //Create table, buttons, and events for course catalog
   $("#catalog").on("click", function(){
 
     //Fetch courses data from server and build table
     $.get('/catalog', function(data){
+
       $("#catalog").hide();
       $("#jsonTable").show();
+
       var headers = ["year", "term", "code", "title", "credits"];
       var table = $("<table></table>");
+
       $("#jsonTable").append(table);
+
       //Create Table Headers
       var tr = $("<tr>");
       table.append(tr);
       tr.append($("<th>"));
+
       for (var j = 0; j < headers.length; j++){
         var th = $("<th>");
         tr.append(th);
         th.append(headers[j].toUpperCase());
       }
+
       //Create table course rows
       for (var i = 0; i < data.length; i++){
         var tr = $("<tr id='course-rows'>");
         table.append(tr);
         var courseID = data[i].courseID;
         tr.append("<td><input type='checkbox' id=" + courseID + "></td>");
+        
         //Fill table cell values
         for (var j = 0; j < headers.length; j++){
           var td = $("<td>");
@@ -44,15 +53,14 @@ $(document).ready(function() {
           td.append(data[i][headers[j]]);
         }
       }
-      $("#jsonTable").append(addBtn, dropBtn);
+      $("#jsonTable").append(addBtn);
     });//end GET
 
     //create add and drop buttons
     var addBtn = $("<a href='#' id='add' class='btn-big-green'>Add a course</a>");
-    var dropBtn = $("<a href='#' id='drop' class='btn-big-green'>Drop a course</a>");
 
-    //add and drop button event handlers
-    $(addBtn).add(dropBtn).on("click", function(e){
+    //add button event handlers
+    $(addBtn).on("click", function(e){
       e.stopPropagation();
 
       //Tells AJAX wheter to add or drop courses
@@ -87,7 +95,8 @@ $(document).ready(function() {
           console.log("data not sent to server");
         }
       });//end POST
-    });//end add/drop events
+    });//end add event handler
+
   });//end catalog button click event
 
   //Create schedule table for courses user is currently taking
@@ -119,6 +128,8 @@ $(document).ready(function() {
       for (var i = 0; i < data.length; i++){
         var tr = $("<tr id='course-rows'>");
         table.append(tr);
+        var courseID = data[i].Course_courseId;
+        tr.append("<td><input type='checkbox' id=" + courseID + "></td>");
 
         //Fill table cell values
         for (var j = 0; j < headers.length; j++){
@@ -133,8 +144,90 @@ $(document).ready(function() {
         }
       }
 
+      //create progress credit div
       $("#scheduleTable").append("<div id=creditCount></div>");
       $("#creditCount").html("Credits in progress: " + creditTotal);
+
+      //create add to transcript button
+      $("#scheduleTable").append("<a href='#' class=btn-big-green id=addToTranscript>Add to transcript</a>");
+      
+      //add drop button
+      var dropBtn = $("<a href='#' id='drop' class='btn-big-green'>Drop a course</a>");
+      $("#scheduleTable").append(dropBtn);
+
+      //add button event handlers
+      $(dropBtn).on("click", function(e){
+        e.stopPropagation();
+
+        //Tells AJAX wheter to add or drop courses
+        var action = $(this).attr("id");
+        console.log(action + " button clicked");
+        var selected = [];
+
+        for(var i = 0; i < $("input:checked").length; i++){
+          selected.push($("input:checked")[i].id);
+        }
+
+        // if (selected.length == 0){
+        //    $("#addDropResult").html("Please select a class to add drop").css("color", "red");
+        //    return false;
+        // }
+
+        let data = {
+          "userId": 1,
+          "courses": selected,
+        }
+
+        //Send course data to server
+        $.ajax({
+          type: "POST",
+          url: '/updateSchedule',
+          data: data,
+          success: function(){
+            $("#addDropResult").html("You have successfully updated your schedule!").css("color", "white");
+            console.log("successfully sent data to server");
+          },
+          error: function(){
+            $("#addDropResult").html("Unable to update schedule at this time").css("color", "red");
+            console.log("data not sent to server");
+          }
+        });//end POST
+      });//end dropBtn event handler
+
+      //addToTranscript event handler
+      $("#addToTranscript").on("click", function(e){
+        e.preventDefault();
+
+        var selected = [];
+
+        for(var i = 0; i < $("input:checked").length; i++){
+          selected.push($("input:checked")[i].id);
+          console.log($("input:checked")[i].id);
+        }
+        if (selected.length == 0){
+           $("#addDropResult").html("Please select a class to add drop").css("color", "red");
+           return false;
+        }
+
+        //Send course data to server
+        $.ajax({
+          type: "POST",
+          url: '/add-to-transcript',
+          data: {
+            "userId": "1",
+            "courseCodes": selected
+          },
+          success: function(){
+            $("#addDropResult").html("You have successfully updated your schedule!").css("color", "white");
+            console.log("successfully sent data to server");
+          },
+          error: function(){
+            $("#addDropResult").html("Unable to update schedule at this time").css("color", "red");
+            console.log("data not sent to server");
+          }
+        });//end POST
+
+      });
     });//end GET
 
   });//end schedule button click event
