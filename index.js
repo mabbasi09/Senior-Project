@@ -5,7 +5,6 @@ var express = require('express');
 var app = express();
 
 var path = require('path');
-var mysql = require('mysql');
 var credentials = require('./models/credentials.js');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -19,8 +18,8 @@ var localStrategy = require('passport-local').Strategy;
 
 //Templating engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', expressHandlebars({defaultLayout: 'layout'}));
-app.set('view engine', 'handlebars');
+app.engine('.hbs', expressHandlebars({defaultLayout: 'index', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 //Body Parser middleware
 app.use(bodyParser.json());
